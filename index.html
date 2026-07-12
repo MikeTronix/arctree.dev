@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArcTree Gaming System (AGS) - Create, Play, Connect</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar glassmorphism">
+      <div class="logo">
+        <img src="/logo.png" alt="ArcTree Logo" class="nav-logo-img" />
+        ArcTree
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#play">Play</a></li>
+        <li><a href="#creators">Creators</a></li>
+        <li><a href="#pricing">Subscribe</a></li>
+        <li><a href="#login" class="btn-primary">Login</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+      <div id="tsparticles"></div>
+      <div class="hero-content">
+        <h1 class="glitch" data-text="ArcTree Gaming System">ArcTree Gaming System</h1>
+        <p>A new frontier of storytelling, from lighthearted humor to the darkest drama.</p>
+        <div class="hero-ctas">
+          <a href="#play" class="btn-primary glow-effect">Play Now</a>
+          <a href="#creators" class="btn-secondary">Build With Us</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section (Light/Humor & Dark/Strife Contrast) -->
+    <section class="section about split-section" id="about">
+      <div class="container">
+        <div class="split-content">
+          <div class="side light-side glassmorphism">
+            <h2>Light & Humor</h2>
+            <p>Experience games that evoke laughter, joy, and whimsy. ArcTree hosts vibrant worlds full of quirky characters and engaging lighthearted narratives.</p>
+            <div class="art-placeholder light-placeholder">
+              <span>[Light Character/Scene Sprite Placeholder]</span>
+            </div>
+          </div>
+          <div class="side dark-side glassmorphism">
+            <h2>Darkness & Strife</h2>
+            <p>Venture into dramatic, intense storylines that will send a tingle of fear down your spine. For those who seek deep, thrilling, and mature narratives.</p>
+            <div class="art-placeholder dark-placeholder">
+              <span>[Dark Dramatic Background Placeholder]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Play Section -->
+    <section class="section play" id="play">
+      <div class="container text-center">
+        <h2>Play on the ArcTree Server</h2>
+        <p>Dive into a growing library of free and premium hosted games.</p>
+        <div class="game-grid">
+          <!-- Game Card Placeholders -->
+          <div class="game-card glassmorphism">
+            <div class="game-art-placeholder">[Game Thumbnail]</div>
+            <h3>The Lighthouse</h3>
+            <p>Free to Play</p>
+            <button class="btn-primary">Play</button>
+          </div>
+          <div class="game-card glassmorphism">
+            <div class="game-art-placeholder">[Game Thumbnail]</div>
+            <h3>Prometheus Protocol</h3>
+            <p>Premium Access</p>
+            <button class="btn-secondary">Unlock</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creators & Open Source Section -->
+    <section class="section creators glassmorphism-alt" id="creators">
+      <div class="container text-center">
+        <h2>For Game Writers & Developers</h2>
+        <p>Want to write games, undergo vetting, and have them hosted for free or paid access?</p>
+        <p>ArcTree is built with an open-source client. Join the community and build the next masterpiece.</p>
+        <div class="creator-actions">
+          <a href="https://github.com/arctree-dev/client" target="_blank" class="btn-secondary">GitHub Client Repo</a>
+          <a href="#contact" class="btn-primary glow-effect">Apply as a Writer</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section class="section pricing" id="pricing">
+      <div class="container text-center">
+        <h2>Unlock Premium Stories</h2>
+        <p>Support our creators and gain access to exclusive content and features.</p>
+        <div class="subscribe-actions">
+          <!-- Placeholders for Patreon / Paddle integrations -->
+          <button class="btn-primary">Subscribe via Paddle</button>
+          <button class="btn-secondary">Support on Patreon</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login/Register Section -->
+    <section class="section login" id="login">
+      <div class="container">
+        <div class="auth-box glassmorphism text-center">
+          <h2>Create an Account</h2>
+          <form class="auth-form" id="registerForm">
+            <input type="email" placeholder="Email Address" required />
+            <input type="password" placeholder="Password" required />
+            
+            <div class="age-verification">
+              <label>
+                <input type="checkbox" required />
+                I verify that I am at least 18 years of age (or the age of majority in my jurisdiction).
+              </label>
+            </div>
+            
+            <button type="submit" class="btn-primary">Sign Up</button>
+            <p class="auth-switch">Already have an account? <a href="#">Login here</a></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-box glassmorphism">
+          <h2>Contact Us</h2>
+          <p>Have questions? Want to collaborate? Send us a message.</p>
+          <form class="contact-form">
+            <input type="text" placeholder="Name" required />
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-logo">ArcTree.dev</div>
+        <div class="footer-links">
+          <a href="./privacy.html">Privacy Policy</a>
+          <a href="./terms.html">Terms & Conditions</a>
+        </div>
+        <p>&copy; 2026 ArcTree Gaming System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

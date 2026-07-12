@@ -98,11 +98,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Basic Form Handlers (Placeholders)
-document.getElementById('registerForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Registration placeholder triggered. Age verified.');
-});
+// Registration/login are handled entirely on game.arctree.dev now — see the
+// HTML comment on the #login section. No handler needed here.
 
+// Contact form has no backend yet — see the HTML comment on the #contact
+// section for what it needs before launch.
 document.querySelector('.contact-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     alert('Message sent placeholder triggered.');

@@ -18,7 +18,7 @@
         <li><a href="#play">Play</a></li>
         <li><a href="#creators">Creators</a></li>
         <li><a href="#pricing">Subscribe</a></li>
-        <li><a href="#login" class="btn-primary">Login</a></li>
+        <li><a href="https://game.arctree.dev/?auth=login" class="btn-primary">Login</a></li>
       </ul>
     </nav>
 
@@ -58,6 +58,16 @@
     </section>
 
     <!-- Play Section -->
+    <!--
+      Static teaser cards, not live data. The real catalogue is
+      GET /api/games on game.arctree.dev, but that endpoint requires an
+      authenticated session (req §6.2) — there's currently no public/
+      anonymous catalogue-preview endpoint, so this section can't be wired
+      to live game data without either (a) a new public-preview endpoint on
+      the server, or (b) marking specific games public_access:true (the
+      Prelude mechanism, Module 12 — meant for one demo game, not a general
+      browsing feed). Until one of those exists, update these cards by hand.
+    -->
     <section class="section play" id="play">
       <div class="container text-center">
         <h2>Play on the ArcTree Server</h2>
@@ -68,19 +78,31 @@
             <div class="game-art-placeholder">[Game Thumbnail]</div>
             <h3>The Lighthouse</h3>
             <p>Free to Play</p>
-            <button class="btn-primary">Play</button>
+            <a href="https://game.arctree.dev/?auth=login" class="btn-primary">Play</a>
           </div>
           <div class="game-card glassmorphism">
             <div class="game-art-placeholder">[Game Thumbnail]</div>
             <h3>Prometheus Protocol</h3>
             <p>Premium Access</p>
-            <button class="btn-secondary">Unlock</button>
+            <a href="https://game.arctree.dev/?auth=login" class="btn-secondary">Unlock</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Creators & Open Source Section -->
+    <!--
+      PLACEHOLDER — needs verification, not just plumbing:
+      - GitHub link below is unverified. The actual game-server repo is
+        private (arctree-gaming-system); whether a separate public client
+        mirror at "arctree-dev/client" exists or is even the intended name
+        is unconfirmed. Don't treat this URL as live until checked.
+      - "Apply as a Writer" reuses the generic contact form below rather than
+        a dedicated application flow/form — there's no vetting process,
+        writer account tier, or submission pipeline defined anywhere in the
+        server design docs yet. This is a product-definition gap, not
+        something the game server currently has any plumbing for.
+    -->
     <section class="section creators glassmorphism-alt" id="creators">
       <div class="container text-center">
         <h2>For Game Writers & Developers</h2>
@@ -94,42 +116,69 @@
     </section>
 
     <!-- Subscription Section -->
+    <!--
+      Blocked on Phase 5 (Paid-Account/Tier Prototype) of the server plan,
+      which has not been built yet — as of this writing the server has no
+      billing/checkout endpoint at all (Phases 0-2 done, Phase 3 in
+      progress). Buttons are disabled rather than wired to a placeholder
+      alert, so this doesn't read as a broken feature to real visitors.
+      Revisit once Phase 5 exists and a real payment processor (Stripe or
+      similar, per the server plan's D4) is chosen.
+    -->
     <section class="section pricing" id="pricing">
       <div class="container text-center">
         <h2>Unlock Premium Stories</h2>
         <p>Support our creators and gain access to exclusive content and features.</p>
         <div class="subscribe-actions">
-          <!-- Placeholders for Patreon / Paddle integrations -->
-          <button class="btn-primary">Subscribe via Paddle</button>
-          <button class="btn-secondary">Support on Patreon</button>
+          <button class="btn-primary" disabled title="Coming soon">Subscribe via Paddle — Coming Soon</button>
+          <button class="btn-secondary" disabled title="Coming soon">Support on Patreon — Coming Soon</button>
         </div>
       </div>
     </section>
 
     <!-- Login/Register Section -->
+    <!--
+      Deliberately NOT a form. Account creation/login cannot happen on this
+      origin: the session cookie is scoped to game.arctree.dev only
+      (SameSite=Strict, no shared Domain — Auth System Design in the server
+      requirements doc), and CORS between the two origins is intentionally
+      not configured (dev plan D3: "zero CORS"). This site can only ever
+      link to the game server's own auth UI, never implement its own.
+
+      The old draft form also self-attested age via a plain "I am 18+"
+      checkbox, which doesn't match the real design: registration collects
+      an actual date_of_birth server-side and computes an age_group
+      (13-15/16-17/adult) with a 13+ minimum (requirements doc §1.7,
+      server-side Phase 4 — not yet built). A marketing-site checkbox would
+      be a materially weaker, conflicting age gate, not just a duplicate.
+
+      ?auth=login / ?auth=register on the links below is a forward
+      commitment, not yet honored: the game client's own login/register UI
+      is being built now (server dev plan Phase 3, in progress) and is
+      expected to read this param to decide its initial view. If that
+      lands differently, update these links to match.
+    -->
     <section class="section login" id="login">
       <div class="container">
         <div class="auth-box glassmorphism text-center">
-          <h2>Create an Account</h2>
-          <form class="auth-form" id="registerForm">
-            <input type="email" placeholder="Email Address" required />
-            <input type="password" placeholder="Password" required />
-            
-            <div class="age-verification">
-              <label>
-                <input type="checkbox" required />
-                I verify that I am at least 18 years of age (or the age of majority in my jurisdiction).
-              </label>
-            </div>
-            
-            <button type="submit" class="btn-primary">Sign Up</button>
-            <p class="auth-switch">Already have an account? <a href="#">Login here</a></p>
-          </form>
+          <h2>Play, Save, and Connect</h2>
+          <p>Create your ArcTree account on the game server to save progress, unlock premium stories, and track achievements across sessions.</p>
+          <div class="auth-actions">
+            <a href="https://game.arctree.dev/?auth=register" class="btn-primary glow-effect">Sign Up</a>
+            <a href="https://game.arctree.dev/?auth=login" class="btn-secondary">Login</a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
+    <!--
+      No real submission backend — out of the game server's scope entirely
+      (this isn't an account/database action, so it doesn't belong on
+      game.arctree.dev either). Needs its own lightweight handler before
+      launch: a serverless form endpoint (e.g. Formspree) or a plain
+      mailto: fallback would both work without standing up new infra.
+    -->
     <section class="section contact" id="contact">
       <div class="container">
         <div class="contact-box glassmorphism">
